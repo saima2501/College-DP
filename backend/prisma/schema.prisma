@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model College {
+  id                   String   @id @default(uuid())
+  name                 String
+  location             String
+  state                String
+  fees                 Int      // Annual fees in INR
+  rating               Float    // Out of 5
+  courses              String[] // Array of course names
+  placementPercentage  Float    @map("placement_percentage")
+  avgPackage           Float    @map("avg_package")       // In LPA
+  description          String
+  examCutoffRank       Int      @map("exam_cutoff_rank")
+  examType             String   @map("exam_type")          // JEE_MAIN, JEE_ADVANCED, etc.
+  type                 String   // IIT, NIT, Private, etc.
+  imageUrl             String?  @map("image_url")
+  admissionUrl         String?  @map("admission_url")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
+
+  @@map("colleges")
+}

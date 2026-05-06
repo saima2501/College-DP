@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --card-bg: rgba(15, 23, 42, 0.6);
+  --primary: #22d3ee;
+  --secondary: #818cf8;
+  --accent: #c084fc;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.1) 0, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(192, 132, 252, 0.1) 0, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 1) 0, transparent 100%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .premium-card {
+    @apply relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/40 backdrop-blur-2xl 
+           transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)];
+  }
+
+  .premium-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10 opacity-0 transition-opacity duration-500 pointer-events-none;
+  }
+
+  .premium-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 font-black;
+  }
+
+  .btn-premium {
+    @apply relative px-6 py-3 bg-slate-900 border border-slate-700 rounded-2xl text-white font-bold 
+           overflow-hidden transition-all duration-300 hover:border-cyan-500 hover:text-cyan-400
+           active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .btn-premium-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl
+           shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]
+           hover:scale-[1.02] transition-all active:scale-95;
+  }
+
+  .glass-tag {
+    @apply px-3 py-1 bg-slate-900/80 backdrop-blur-md border border-slate-700 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-300;
+  }
+
+  .stat-box {
+    @apply p-4 bg-slate-900/50 rounded-2xl border border-slate-800/50 flex flex-col gap-1 transition-colors hover:border-slate-700;
+  }
+
+  .input-field, .select-field {
+    @apply w-full bg-slate-900 border border-slate-700 rounded-2xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all shadow-inner;
+  }
+
+  .select-field option {
+    @apply bg-slate-900 text-white font-medium;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-[1.02] transition-all active:scale-95 inline-flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-slate-800 border border-slate-700 text-white font-bold rounded-2xl hover:border-cyan-500 hover:text-cyan-400 transition-all active:scale-95 inline-flex items-center justify-center gap-2;
+  }
+}
+
+/* Luxury Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
