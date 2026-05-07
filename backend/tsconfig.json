@@ -9,6 +9,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "nodeNext",
+    "types": [
+      "node"
+    ],
     "declaration": true,
     "sourceMap": true
   },
