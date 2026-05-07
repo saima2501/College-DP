@@ -48,7 +48,7 @@ export const getCollegeById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const college = await prisma.college.findUnique({
-      where: { id },
+      where: { id: String(id) },
     });
 
     if (!college) {
